@@ -1002,3 +1002,115 @@ animation: growing-grass-ans 1s 2s backwards;
 .not-loaded * {
 animation-play-state: paused !important;
 }
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Esto asegura que la planta esté en la parte inferior */
+    min-height: 100vh;
+    background-color: #191970; /* Fondo oscuro */
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.night {
+    position: fixed;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    filter: blur(0.1vmin);
+    background-color: #191970; /* Fondo sin líneas */
+}
+
+/* Desplazar las flores más hacia abajo */
+.flowers {
+    position: absolute;
+    top: 90%; /* Esto mueve las flores más cerca del fondo de la página */
+    left: 50%;
+    transform: translateX(-50%) scale(0.7); /* Ajusta el tamaño de las flores */
+    z-index: 10;
+}
+
+.music-player {
+    display: flex; /* Utiliza Flexbox para el layout */
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-content: center; /* Centra los elementos horizontalmente en el contenedor */
+    position: fixed; /* Mantiene el reproductor en una posición fija */
+    bottom: 350px; /* Posición desde abajo */
+    left: 85%; /* Centra el contenedor en la página */
+    transform: translateX(-50%); /* Asegura un centrado perfecto */
+    width: auto; /* Auto ajusta el ancho basado en el contenido */
+    padding: 10px; /* Espacio alrededor del contenido */
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para visibilidad */
+    background-color: #333;
+    border-radius: 10px;
+}
+
+.play-pause-btn {
+    padding: 6px 15px;
+    font-size: 12px;
+    background-color: #ff0077;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.play-pause-btn:hover {
+    background-color: #ff3399;
+}
+
+.album-cover {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    transition: transform 2s;
+}
+
+.album-cover.rotate {
+    animation: rotate 3s infinite linear;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Subir el texto un poco más arriba */
+.text-container {
+    position: absolute;
+    top: 6%; /* Ajusté el texto un poco más arriba */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 14px;
+}
+
+.signature {
+    position: absolute;
+    top: 18%; /* Ajusté la firma un poco más arriba */
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(155, 240, 145);
+    text-align: center;
+    font-size: 10px;
+}
+
+/* Media query para pantallas pequeñas (móviles) */
+@media only screen and (max-width: 600px) {
+    .play-pause-btn {
+        width: 100%;     /* Hace que el botón ocupe todo el ancho de su contenedor */
+        padding: 10px;   /* Ajuste de padding para un mejor toque */
+    }
+
+    .album-cover {
+        display: none;  /* Oculta la imagen del disco en dispositivos móviles para ahorrar espacio */
+    }
+}
